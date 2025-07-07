@@ -1,9 +1,9 @@
 test_dataset:
   load_num: 0
   inp_path:
-  - ../demo_data/test_data/input/
+  - ./demo_data/test_data/input/
   gt_path:
-  - ../demo_data/test_data/gt/
+  - ./demo_data/test_data/gt/
   zern_index: SH
   minmax_norm: 1
   adjustIntParam: 65535

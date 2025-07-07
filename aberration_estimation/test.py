@@ -105,7 +105,7 @@ def test(loader, mymodel, epoch_detail, save_test_suffix, eval_type=None, save_p
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--config', default='./demo_model/test.yaml')
+    parser.add_argument('--config', default='./aberration_estimation/demo_model/test.yaml')
     parser.add_argument('--epoch_detail', default='epoch-best')
     parser.add_argument('--save_test_suffix', default='')
     parser.add_argument('--gpu', default='0')

@@ -1,4 +1,4 @@
-load_pretrain: pretrained_model_1lambda.pth
+load_pretrain: ./aberration_estimation/pretrained_model_1lambda.pth
 
 save_details:
   subfolder: mymodel
@@ -6,11 +6,11 @@ save_details:
   suffix: train_num2000
   
 train_dataset:
-  load_num: 2000
+  load_num: 0
   inp_path:
-  - ../demo_data/training_data/input
+  - ./demo_data/training_data/input
   gt_path:
-  - ../demo_data/training_data/gt
+  - ./demo_data/training_data/gt
   zern_index: SH
   minmax_norm: 1
   adjustIntParam: 65535
@@ -26,9 +26,9 @@ train_dataset:
 val_dataset:
   load_num: 0
   inp_path:
-  - ../demo_data/val_data/input
+  - ./demo_data/val_data/input
   gt_path:
-  - ../demo_data/val_data/gt
+  - ./demo_data/val_data/gt
   zern_index: SH
   minmax_norm: 1
   adjustIntParam: 65535

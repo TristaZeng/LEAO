@@ -27,7 +27,7 @@ def zernike_poly_SH(c,device=None):
     if len(c.shape)==1:
         c = torch.unsqueeze(c,dim=0)
     bs = c.shape[0]
-    load_path = './zernike_polynomials/'
+    load_path = './aberration_estimation/zernike_polynomials/'
     if device is None:
         device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     phase = torch.zeros([bs,199,199]).to(device)
@@ -43,7 +43,7 @@ def zernike_poly_ANSI(c,device=None):
     if len(c.shape)==1:
         c = torch.unsqueeze(c,dim=0)
     bs = c.shape[0]
-    load_path = './zernike_polynomials_ANSI/'
+    load_path = './aberration_estimation/zernike_polynomials_ANSI/'
     if device is None:
         device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     phase = torch.zeros([bs,199,199]).to(device)

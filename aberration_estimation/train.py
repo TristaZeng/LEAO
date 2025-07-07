@@ -383,7 +383,7 @@ def main(config_, save_path):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--config', default='train.yaml')
+    parser.add_argument('--config', default='./aberration_estimation/train.yaml')
     parser.add_argument('--gpu', default='0')
     args = parser.parse_args()
 
@@ -404,6 +404,6 @@ if __name__ == '__main__':
         latent_descript = '_LatWeight1_NoNewMin4_10ep'
     else:
         latent_descript = ''
-    save_path = os.path.join('./saved_models/', save_name+'_TriInp'+latent_descript)
+    save_path = os.path.join('./aberration_estimation/saved_models/', save_name+'_TriInp'+latent_descript)
 
     main(config, save_path)
