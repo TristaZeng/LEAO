@@ -1,0 +1,69 @@
+load_pretrain: pretrained_model_1lambda.pth
+
+save_details:
+  subfolder: mymodel
+  type: Simulated_neurons
+  suffix: train_num2000
+  
+train_dataset:
+  load_num: 2000
+  inp_path:
+  - ../demo_data/training_data/input
+  gt_path:
+  - ../demo_data/training_data/gt
+  zern_index: SH
+  minmax_norm: 1
+  adjustIntParam: 65535
+  batch_size: 1
+  sampler: torch.utils.data.RandomSampler
+  cut: 0
+  patch_size: 280
+  mask_flag: 0
+  angle_num: 113
+  desired_r: 6
+  Nnum: 13
+  
+val_dataset:
+  load_num: 9
+  inp_path:
+  - ../demo_data/val_data/input
+  gt_path:
+  - ../demo_data/val_data/gt
+  zern_index: SH
+  minmax_norm: 1
+  adjustIntParam: 65535
+  batch_size: 1
+  cut: 0
+  patch_size: 280
+  mask_flag: 0
+  angle_num: 113
+  desired_r: 6
+  Nnum: 13
+  
+model:
+  name: rcan_regressor2d_v7
+  args:
+    inp_angle: 113
+    channel: 64
+    reg_channel: 64
+    n_ResGroup: 3
+    n_RCAB: 2
+    
+optimizer:
+  name: adam
+  args:
+    lr: 0.0001
+    
+multi_step_lr:
+  milestones:
+  - 200
+  gamma: 0.7
+  
+epoch_max: 400
+epoch_val: 1
+epoch_save: 20
+
+recon_loss: nn.MSELoss()
+phase_loss: utils.zernike2phasemap_loss_SH
+latent_loss: torch.nn.TripletMarginLoss(margin=1)
+

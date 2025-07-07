@@ -1,0 +1,27 @@
+test_dataset:
+  load_num: 0
+  inp_path:
+  - ../demo_data/test_data/input/
+  gt_path:
+  - ../demo_data/test_data/gt/
+  zern_index: SH
+  minmax_norm: 1
+  adjustIntParam: 65535
+  batch_size: 1
+  cut: 0
+  patch_size: 280
+  mask_flag: 0
+  angle_num: 113
+  desired_r: 6
+  Nnum: 13
+  
+model:
+  args:
+    inp_angle: 113
+    channel: 64
+    reg_channel: 64
+    n_ResGroup: 3
+    n_RCAB: 2
+
+phase_loss: utils.zernike2phasemap_loss_SH
+
