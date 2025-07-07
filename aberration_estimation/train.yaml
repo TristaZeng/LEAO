@@ -24,7 +24,7 @@ train_dataset:
   Nnum: 13
   
 val_dataset:
-  load_num: 9
+  load_num: 0
   inp_path:
   - ../demo_data/val_data/input
   gt_path:
