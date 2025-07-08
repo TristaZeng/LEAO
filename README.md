@@ -69,6 +69,7 @@ With a trained model, you can perform inference by:
 
 + Estimated aberrations will be stored in a folder named `TestResult` inside your model folder. If you run `./aberration_estimation/test.py` defaultly without any modifications, the results will appear in `./aberration_estimation/demo_model/TestResult`.
 
+<div align=center><img src="test_pred_and_gt_comparison.png" /></div>
 If you would like to train a model of your own, follow these steps:
 
 + Prepare a folder of training data and validation data. We provide downloading link to demo training and validation dataset in `./demo_data`, because file size is too large to upload directly to Github.
@@ -125,7 +126,7 @@ Below is a table of all the parameters in a configuration file:
 
 <h2  id="Volume reconstruction">4. Volume reconstruction</h2>
 
-After aberration estimation with LEAO, you can reconstruct test light-field data by running `./vol_reconstruction/main_recon.m`. Below are the important parameters in this script:
+After aberration estimation with LEAO, you can reconstruct test light-field data by running `./vol_reconstruction/main_recon.m`. Reconstruction results will by default be saved to `./vol_reconstruction/Recon`. Below are the important parameters in this script:
 
 | **Parameter**     | **Description**                                                                                                                      | **Example Value**                                   |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------- |
@@ -135,3 +136,13 @@ After aberration estimation with LEAO, you can reconstruct test light-field data
 | `save_iter`       | Frequency of saving (in iterations).                                                                                                 | `5`                                                 |
 | `LEAO_model_path` | Path to the estimated aberrations.                                                                                                   | `'../aberration_estimation/demo_model/TestResult/'` |
 | `epoch_detail`    | Name of the saved weights to be used, in case there are multiple estimations from different saved weights, usually different epochs. | `epoch-best`                                        |
+
+After running the script, you should be able to get similar reconstruction result:
+
+<div align=center><img src="recon_output.png" /></div>
+
+<hr>
+
+<h2 id="Updates">5. Updates</h2>
+
+2025.7.8 Add demo results to readme.

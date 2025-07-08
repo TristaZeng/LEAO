@@ -8,7 +8,7 @@ test_dataset:
   minmax_norm: 1
   adjustIntParam: 65535
   batch_size: 1
-  cut: 0
+  cut: 2
   patch_size: 280
   mask_flag: 0
   angle_num: 113

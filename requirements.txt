@@ -1,4 +1,5 @@
 pyyaml
+matplotlib
 tqdm==4.66.2
 xlrd==2.0.1
 xlutils==2.0.0

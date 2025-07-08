@@ -15,6 +15,7 @@ import utils
 import xlwt
 import xlrd
 from xlutils.copy import copy
+import matplotlib.pyplot as plt
 
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:32"
 
@@ -154,4 +155,22 @@ if __name__ == '__main__':
         tiff.imwrite(save_path+file_name+'_pred_phase_'+args.epoch_detail+'.tif',phase[file_id,...])
         if gt_phase is not None:
             tiff.imwrite(save_path+file_name+'_gt_phase.tif',gt_phase[file_id,...])
+
+        peak_val = np.max(np.abs(gt_phase[file_id,...]))
+        fig, axs = plt.subplots(1, 2, figsize=[9, 6])
+        ax1, ax2 = axs.flat
+        im1 = ax1.imshow(gt_phase[file_id, ...], cmap='jet', vmin=-peak_val, vmax=peak_val)
+        ax1.set_title('GT aberration wavefront')
+        ax1.axis('off')  
+        im2 = ax2.imshow(phase[file_id, ...], cmap='jet', vmin=-peak_val, vmax=peak_val)
+        ax2.set_title('LEAO aberration wavefront')
+        ax2.axis('off')  
+        cbar = fig.colorbar(im2, ax=axs.ravel().tolist(), shrink=0.9)
+        tick_vals = [-peak_val, 0, peak_val]
+        tick_labels = [f'{-peak_val/(2*np.pi):.2f}λ', '0', f'{peak_val/(2*np.pi):.2f}λ']
+        cbar.set_ticks(tick_vals)
+        cbar.set_ticklabels(tick_labels)
+        cbar.set_label('RMS')
+        fig.savefig(save_path + file_name + '_pred_and_gt_comparison.png', dpi=300, bbox_inches='tight')
+
    
